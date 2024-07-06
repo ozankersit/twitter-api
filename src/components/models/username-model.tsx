@@ -1,3 +1,4 @@
 export interface UsernameModel {
-    timestamp:number
+    username:string;
+    timestamp:number;
 }

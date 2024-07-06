@@ -1,13 +1,10 @@
 "use client";
+import Link from "next/link";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 
 
-type Props = {
-  username:string
-}
-
-export default function SearchInput({username}:Props) {
+export default function SearchInput() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -32,7 +29,7 @@ export default function SearchInput({username}:Props) {
     }, 750);
   };
 
-  username = searchParams.get("q") as string;
+  const search = searchParams.get("q") as string;
 
   return (
     <>
@@ -44,7 +41,7 @@ export default function SearchInput({username}:Props) {
         name="search"
         placeholder="Search Account"
         className="rounded-lg py-2 px-2.5 bg-red-700 text-slate-400 flex items-center gap-8"
-        defaultValue={username?.toString()}
+        defaultValue={search?.toString()}
         onChange={(e) => {
           handleChange(e.target.value);
         }}
@@ -55,6 +52,9 @@ export default function SearchInput({username}:Props) {
          <span>asd</span>
       )}
     </div>
+    <button>
+    <Link href={`/information/${search}`}>Information</Link>
+    </button>
     </>
     
   );
