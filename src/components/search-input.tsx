@@ -1,8 +1,8 @@
 "use client";
-import Link from "next/link";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-
+import SearchIcon from "./search-icon";
+import SpinnerIcon from "./spinner-icon";
 
 export default function SearchInput() {
   const searchParams = useSearchParams();
@@ -33,29 +33,20 @@ export default function SearchInput() {
 
   return (
     <>
-    <div className="flex items-center relative">
-      {/* <span>SearchInput: {search}</span> */}
-      <input
-        type="text"
-        id="search"
-        name="search"
-        placeholder="Search Account"
-        className="rounded-lg py-2 px-2.5 bg-red-700 text-slate-400 flex items-center gap-8"
-        defaultValue={search?.toString()}
-        onChange={(e) => {
-          handleChange(e.target.value);
-        }}
-      />
-      {isLoading ? (
-        <span className="absolute right-5">Searching...</span>
-      ) : (
-         <span>asd</span>
-      )}
-    </div>
-    <button>
-    <Link href={`/information/${search}`}>Information</Link>
-    </button>
+      <div className="relative flex items-center rounded-lg focus-within:shadow-lg bg-white overflow-hidden lg:w-1/2 w-3/4 h-16">
+        <input
+          type="text"
+          id="search"
+          name="search"
+          placeholder="Search Profile"
+          className="peer h-full w-full outline-none text-xl pr-2 pl-3"
+          defaultValue={search?.toString()}
+          onChange={(e) => {
+            handleChange(e.target.value);
+          }}
+        />
+        {isLoading ? <SpinnerIcon/> : <SearchIcon href={`/information/${search}`} />}
+      </div>
     </>
-    
   );
 }

@@ -1,5 +1,6 @@
 import { UsernameModel } from "@/components/models/username-model";
 import NotFound from "./not-found";
+import Image from "next/image";
 
 export default async function ProfileInformation({ params }: { params: { slug: string } }) {
 
@@ -28,6 +29,10 @@ export default async function ProfileInformation({ params }: { params: { slug: s
   }
 
   return (
-    <div>{data.timestamp}</div>
+    <div className="flex flex-col items-center">
+      <span>Your Twitter Profile Informations</span>
+      <span>{data.username}</span>
+      <Image src={`${data?.profile_pic_url}`} alt="" width={50} height={50} className="rounded" />
+    </div>
   ) 
 }
