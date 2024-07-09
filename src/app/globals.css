@@ -25,3 +25,9 @@
         background-position: 100% 50%;
     }
 }
+
+.text-gradient {
+    background: linear-gradient(90deg, #5d6a37 32.41%, #b38172 46.52%, #075d44 64.27%, #0038ff 79.11%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -7,7 +7,7 @@ type Props = {
 
 export default function SearchIcon({href}:Props) {
   return (
-    <div className="grid place-items-center h-full w-12 text-gray-300 pr-3">
+    <div className="grid place-items-center h-full w-12 text-gray-300 px-3 border-l border-solid">
       <Link href={href}>
       <svg
             xmlns="http://www.w3.org/2000/svg"
